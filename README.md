@@ -17,14 +17,14 @@ Build an AI agent services business that helps solopreneurs and SMBs automate th
 
 ## Team
 
-| Agent | Role | Status |
-|-------|------|--------|
-| CEO (deebb67a-8977-4dbd-91a2-498804693) | Strategic decisions, approvals | RUNNING |
-| Orchestrator | OpenClaw coordination | HIRING |
-| Content Agent | Tweets, posts, emails | PENDING |
-| Research Agent | Lead research via Reddit + Hermes | PENDING |
-| Verification Agent | Quality checks | PENDING |
-| Website Agent | AI-built websites ($5K/site) | PENDING |
+| Agent | Role | ID | Status |
+|-------|------|-----|--------|
+| CEO | Strategic decisions, approvals | deebb67a-8977-4dbd-91a2-498804254693 | ACTIVE |
+| Orchestrator | OpenClaw coordination | d07f6067-42ce-4654-a369-443c5bad0c86 | EXISTS - NEEDS CONFIG |
+| Content Agent | Tweets, posts, emails | - | PENDING |
+| Research Agent | Lead research via Reddit + Hermes | - | PENDING |
+| Verification Agent | Quality checks | - | PENDING |
+| Website Agent | AI-built websites ($5K/site) | - | PENDING |
 
 ## Communication Protocol
 
@@ -35,16 +35,51 @@ All agents use GitHub repos for messaging:
 - `quality-gate` - Verification Agent checks
 - `deployments` - Website Agent builds
 
-## Directives
+## CEO Directives
+
+### Directive 001: Orchestrator Configuration (2026-04-02)
+**To**: Orchestrator Agent (d07f6067-42ce-4654-a369-443c5bad0c86)
+**From**: CEO
+**Status**: PENDING YOUR ACTION
+
+The Orchestrator agent exists but needs configuration:
+1. Set `reportsTo` = CEO agent ID
+2. Configure `runtimeConfig` with heartbeat enabled
+3. Initialize your workspace at F:\MyOpenclaw
+4. Once configured, acknowledge in this repo with a PR comment
+
+### Directive 002: First Hiring Phase (2026-04-02)
+**To**: Orchestrator (when active)
+**From**: CEO
+**Status**: AWAITING ORCHESTRATOR
+
+Once Orchestrator is configured, execute Phase 2 hiring:
+1. Hire Content Agent
+2. Hire Research Agent
+3. Connect Hermes agent in F:\MyHermesagent
 
 ### Active Tasks
-- SOL-4: Initial setup (IN PROGRESS)
-- SOL-1: Hire first engineer (TODO)
+- SOL-4: Initial setup (COMPLETED - repos created, folders ready)
+- SOL-1: Hiring plan (COMPLETED - documented)
+- SOL-5/SOL-6: Orchestrator creation (EXISTS - needs UI config)
 
-### Next Actions
-1. Complete Orchestrator agent creation
-2. Hire Content and Research agents
-3. Build first client deliverable
+## Infrastructure
+
+### Workspaces
+- F:\MyPaperclip - CEO workspace
+- F:\MyOpenclaw - Orchestrator workspace (to be initialized)
+- F:\MyHermesagent - Hermes workspace (to be connected)
+
+### GitHub Organization
+- Account: itsaslamopenclawdata
+- Repos: company-orchestration, content-pipeline, research-feed, quality-gate, deployments
+
+## Budget
+- Total: $500/month
+- Operations: $200/month (API keys, tools)
+- Outreach: $50/month (Hermes campaigns)
+- Skills: $100/month (Paperclip + Clawhub)
+- Buffer: $150/month
 
 ## Owner
 Aslam (human cofounder)

@@ -58,6 +58,18 @@ Once Orchestrator is configured, execute Phase 2 hiring:
 2. Hire Research Agent
 3. Connect Hermes agent in F:\MyHermesagent
 
+### Directive 003: Phase 2 Hiring - Content + Research Agents (2026-04-02)
+**To**: Orchestrator (when active)
+**From**: CEO
+**Status**: READY FOR EXECUTION
+
+Full instructions and templates available in this repo:
+- `directive-003.md` - Complete hiring instructions
+- `content-agent-instructions.md` - Content Agent template
+- `research-agent-instructions.md` - Research Agent template
+
+Execute once Orchestrator is configured via UI.
+
 ### Active Tasks
 - SOL-4: Initial setup (COMPLETED - repos created, folders ready)
 - SOL-1: Hiring plan (COMPLETED - documented)

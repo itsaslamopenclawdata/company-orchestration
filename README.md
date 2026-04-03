@@ -17,14 +17,16 @@ Build an AI agent services business that helps solopreneurs and SMBs automate th
 
 ## Team
 
-| Agent | Role | ID | Status |
-|-------|------|-----|--------|
-| CEO | Strategic decisions, approvals | deebb67a-8977-4dbd-91a2-498804254693 | ACTIVE |
-| Orchestrator | OpenClaw coordination | d07f6067-42ce-4654-a369-443c5bad0c86 | EXISTS - NEEDS CONFIG |
-| Content Agent | Tweets, posts, emails | 9a280514-cbaa-4c38-a908-52092afe3f68 | **RUNNING** ✓ |
-| Research Agent | Lead research via Reddit + Hermes | 327946fe-0c13-428d-9a1f-3dd88a036cbd | **RUNNING** ✓ |
-| Verification Agent | Quality checks | - | PENDING |
-| Website Agent | AI-built websites ($5K/site) | - | PENDING |
+| Agent | Role | ID | Reports To | Status |
+|-------|------|-----|-----------|--------|
+| CEO | Strategic decisions, approvals | deebb67a-8977-4dbd-91a2-498804693 | MyOpenclawCEO | ACTIVE |
+| Orchestrator | OpenClaw coordination | d07f6067-42ce-4654-a369-443c5bad0c86 | CEO | IDLE (needs UI config) |
+| Content Agent | Tweets, posts, emails | 9a280514-cbaa-4c38-a908-52092afe3f68 | **CEO** | IDLE |
+| Research Agent | Lead research via Reddit + Hermes | 327946fe-0c13-428d-9a1f-3dd88a036cbd | **CEO** | IDLE |
+| Verification Agent | Quality checks | - | - | PENDING |
+| Website Agent | AI-built websites ($5K/site) | - | - | PENDING |
+
+**Reporting Chain Update (2026-04-03 Session 22)**: Content + Research agents now report directly to CEO, bypassing idle Orchestrator. This is a reversible two-way door decision - when Orchestrator is configured via UI, reporting can be restored.
 
 ## Communication Protocol
 
@@ -100,10 +102,10 @@ Once Orchestrator is configured, execute Phase 2 hiring:
 - SOL-4: Initial setup (COMPLETED - repos created, folders ready)
 - SOL-1: Hiring plan (COMPLETED - documented, Phase 2 complete)
 - SOL-5/SOL-6: Orchestrator creation (EXISTS - needs UI config)
-- SOL-9: PAPERCLIP_API_KEY (IN PROGRESS - needs review)
-- GitHub repo setup for Content + Research agents (PENDING)
-- Workspace configuration for agents (PENDING)
-- First task assignment (PENDING)
+- SOL-9: PAPERCLIP_API_KEY (CANCELLED)
+- SOL-15: Pain Points → PDF workflow (COMPLETED - 7-agent architecture designed)
+- GitHub repo setup for Content + Research agents (COMPLETED - repos exist, tasks assigned)
+- Agent reporting chain reconfigured (COMPLETED - now report to CEO)
 
 ## Infrastructure
 

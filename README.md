@@ -19,14 +19,14 @@ Build an AI agent services business that helps solopreneurs and SMBs automate th
 
 | Agent | Role | ID | Reports To | Status |
 |-------|------|-----|-----------|--------|
-| CEO | Strategic decisions, approvals | deebb67a-8977-4dbd-91a2-498804693 | MyOpenclawCEO | ACTIVE |
-| Orchestrator | OpenClaw coordination | d07f6067-42ce-4654-a369-443c5bad0c86 | CEO | IDLE (needs UI config) |
-| Content Agent | Tweets, posts, emails | 9a280514-cbaa-4c38-a908-52092afe3f68 | **CEO** | IDLE |
-| Research Agent | Lead research via Reddit + Hermes | 327946fe-0c13-428d-9a1f-3dd88a036cbd | **CEO** | IDLE |
-| Verification Agent | Quality checks | - | - | PENDING |
-| Website Agent | AI-built websites ($5K/site) | - | - | PENDING |
+| CEO | Strategic decisions, approvals | deebb67a-8977-4dbd-91a2-498804254693 | MyOpenclawCEO | **RUNNING** ✓ |
+| Orchestrator | OpenClaw coordination | d07f6067-42ce-4654-a369-443c5bad0c86 | CEO | IDLE (needs CLI session) |
+| Content Agent | Tweets, posts, emails | 9a280514-cbaa-4c38-a908-52092afe3f68 | CEO | IDLE (needs CLI session) |
+| Research Agent | Lead research via Reddit + Hermes | 327946fe-0c13-428d-9a1f-3dd88a036cbd | CEO | IDLE (needs CLI session) |
+| Verification Agent | Quality checks | 0bb37436-d72e-47d3-83fd-ea82b5eeab9b | Orchestrator | **PENDING BOARD APPROVAL** |
+| Website Agent | AI-built websites ($5K/site) | 8d7dcbbc-5e98-4d80-b204-8112fdc96fb2 | Orchestrator | **PENDING BOARD APPROVAL** |
 
-**Reporting Chain Update (2026-04-03 Session 22)**: Content + Research agents now report directly to CEO, bypassing idle Orchestrator. This is a reversible two-way door decision - when Orchestrator is configured via UI, reporting can be restored.
+**Reporting Chain (2026-04-03)**: Content + Research agents report directly to CEO. Verification + Website agents will report to Orchestrator once approved.
 
 ## Communication Protocol
 
@@ -101,11 +101,51 @@ Once Orchestrator is configured, execute Phase 2 hiring:
 ### Active Tasks
 - SOL-4: Initial setup (COMPLETED - repos created, folders ready)
 - SOL-1: Hiring plan (COMPLETED - documented, Phase 2 complete)
-- SOL-5/SOL-6: Orchestrator creation (EXISTS - needs UI config)
-- SOL-9: PAPERCLIP_API_KEY (CANCELLED)
+- SOL-5/SOL-6: Orchestrator creation (EXISTS - needs CLI session)
+- SOL-9: PAPERCLIP_API_KEY (CANCELLED - not needed with local adapter)
 - SOL-15: Pain Points → PDF workflow (COMPLETED - 7-agent architecture designed)
-- GitHub repo setup for Content + Research agents (COMPLETED - repos exist, tasks assigned)
-- Agent reporting chain reconfigured (COMPLETED - now report to CEO)
+- SOL-16: Create 20 subgoals (TODO - assigned to Orchestrator)
+- SOL-17: Brand awareness content (TODO - assigned to Content Agent)
+- SOL-18: Find 5 qualified leads (TODO - assigned to Research Agent)
+
+## Current Situation (2026-04-03 Session 23)
+
+### Issue: Agents Idle Despite Task Assignments
+
+**Problem**: Content, Research, and Orchestrator agents have tasks assigned but are IDLE.
+
+**Root Cause**: `claude_local` agents require their own CLI sessions to process heartbeats. The `wakeOnDemand` feature alone doesn't auto-start CLI processes.
+
+### Actions Required
+
+**For Aslam (Board):**
+1. **Approve pending agents**:
+   - Verification Agent (approval: `8ee7394a-2354-4728-a78b-ecf930330cf9`)
+   - Website Agent (approval: `0e4e3e21-0f40-4610-bf56-7a57908b5463`)
+
+**To start agents manually:**
+```bash
+# Content Agent
+npx paperclipai agent local-cli content-agent
+
+# Research Agent
+npx paperclipai agent local-cli research-agent
+
+# Orchestrator
+npx paperclipai agent local-cli orchestrator
+```
+
+**Alternative**: Reconfigure agents to use `openclaw_gateway` adapter for automatic invocation via OpenClaw.
+
+### Agent Workflow Status
+```
+┌─────────┐     ┌──────────────┐     ┌─────────────────┐
+│   CEO   │────▶│ Orchestrator │────▶│ Content/Research│
+│ (me)    │     │   (idle)     │     │    (idle)       │
+└─────────┘     └──────────────┘     └─────────────────┘
+     │                                      │
+     └────────────need CLI sessions─────────┘
+```
 
 ## Infrastructure
 

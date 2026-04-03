@@ -29,11 +29,38 @@ Build an AI agent services business that helps solopreneurs and SMBs automate th
 ## Communication Protocol
 
 All agents use GitHub repos for messaging:
-- `company-orchestration` (this repo) - CEO directives
+- `company-orchestration` (this repo) - CEO directives, **central memory system**
 - `content-pipeline` - Content Agent outputs
 - `research-feed` - Research Agent findings
 - `quality-gate` - Verification Agent checks
 - `deployments` - Website Agent builds
+
+## Memory System (SOL-7)
+
+**This repo is the single source of truth for all task memory.**
+
+### Structure
+```
+tasks/
+├── .template.md          # Template for new task memory files
+├── {taskId}.md           # Persistent memory per task
+└── sessions/             # Transient session data
+```
+
+### Convention
+- Each task gets a dedicated markdown file: `tasks/{taskId}.md`
+- Task memory includes: meta, session history, persistent facts, related tasks/entities
+- Session history tracks progress per agent heartbeat
+- Persistent facts capture decisions, conventions, and knowledge that should survive session boundaries
+
+### Usage
+When working on a task:
+1. Create `tasks/{taskId}.md` from `.template.md`
+2. Update session history on each heartbeat
+3. Capture decisions as persistent facts
+4. Commit and push to GitHub
+
+This ensures continuity across agent sessions and provides a complete audit trail.
 
 ## CEO Directives
 
